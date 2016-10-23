@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  web:
+    image: nginx:alpine
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    volumes_from:
+      - app:ro
+  app:
+    build: .
+    volumes:
+      - app_html:/usr/share/nginx/html
+
+volumes:
+  app_html:
+
+# @TODO Copy config for nginx srever with php-fpm

@@ -12,9 +12,6 @@ services:
   app:
     build: .
     volumes:
-      - app_html:/usr/share/nginx/html
+      - /usr/share/nginx/html
 
-volumes:
-  app_html:
-
-# @TODO Copy config for nginx srever with php-fpm
+# @TODO Mount/copy config for nginx server with php-fpm

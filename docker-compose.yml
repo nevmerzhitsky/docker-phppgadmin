@@ -6,12 +6,17 @@ services:
     volumes:
       - /usr/share/nginx/html
   web:
-    image: nginx:alpine
+    image: nginx:stable-alpine
     depends_on:
       - app
     ports:
       - "80:80"
     volumes_from:
       - app:ro
-
-# @TODO Mount/copy config for nginx server with php-fpm
+    volumes:
+      - ./nginx.conf.template:/etc/nginx/conf.d/nginx.conf.template
+    environment:
+      - NGINX_FPM_HOST=127.0.0.1
+      - NGINX_FPM_PORT=9000
+      - NGINX_INDEX_SCRIPT=index.php
+    #command: /bin/sh -c "envsubst < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"

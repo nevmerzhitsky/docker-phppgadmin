@@ -1,6 +1,10 @@
 version: '2'
 
 services:
+  app:
+    build: .
+    volumes:
+      - /usr/share/nginx/html
   web:
     image: nginx:alpine
     depends_on:
@@ -9,9 +13,5 @@ services:
       - "80:80"
     volumes_from:
       - app:ro
-  app:
-    build: .
-    volumes:
-      - /usr/share/nginx/html
 
 # @TODO Mount/copy config for nginx server with php-fpm

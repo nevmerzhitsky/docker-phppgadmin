@@ -9,3 +9,4 @@ RUN mkdir -p /usr/share/nginx/html && \
     git clone https://github.com/phppgadmin/phppgadmin.git . && \
     git checkout tags/REL_5-0-BETA-2 && \
     rm -rf .git*
+RUN apk del git

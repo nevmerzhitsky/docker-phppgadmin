@@ -3,13 +3,16 @@ version: '2'
 services:
   app:
     build: pgadmin
+    restart: always
     volumes:
       - /usr/share/nginx/html
   web:
     build: nginx
+    restart: always
     depends_on:
       - app
     ports:
       - "80:80"
+      - "443:443"
     volumes_from:
       - app:ro

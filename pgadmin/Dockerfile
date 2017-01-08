@@ -3,7 +3,11 @@ MAINTAINER Sergey Nevmerzhitsky "sergey.nevmerzhitsky@gmail.com"
 
 ENV NGINX_DOCROOT=/usr/share/nginx/html
 
-RUN apk add --no-cache git && \
+RUN set -ex && \
+    apk --no-cache add postgresql-dev && \
+    docker-php-ext-install pgsql
+RUN set -ex && \
+    apk --no-cache add git && \
     mkdir -p $NGINX_DOCROOT && \
     cd $NGINX_DOCROOT && \
     rm -rf * && \

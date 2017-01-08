@@ -1,8 +1,11 @@
 FROM php:5.6-fpm-alpine
 MAINTAINER Sergey Nevmerzhitsky "sergey.nevmerzhitsky@gmail.com"
 
+ENV NGINX_DOCROOT=/usr/share/nginx/html
+
 RUN apk add --no-cache git && \
-    cd /usr/share/nginx/html && \
+    mkdir -p $NGINX_DOCROOT && \
+    cd $NGINX_DOCROOT && \
     rm -rf * && \
     git clone https://github.com/phppgadmin/phppgadmin.git . && \
     git checkout tags/REL_5-0-BETA-2 && \

@@ -1,0 +1,4 @@
+@import url(../default/global.css);
+.topbar, .topbar * {
+    background-color: #F55;
+}

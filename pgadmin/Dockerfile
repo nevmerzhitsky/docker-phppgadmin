@@ -1,7 +1,7 @@
 FROM php:5.6-fpm-alpine
 MAINTAINER Sergey Nevmerzhitsky "sergey.nevmerzhitsky@gmail.com"
 
-ENV NGINX_DOCROOT=/usr/share/nginx/html
+ARG NGINX_DOCROOT=/usr/share/nginx/html
 
 RUN set -ex && \
     apk --no-cache add postgresql-dev && \

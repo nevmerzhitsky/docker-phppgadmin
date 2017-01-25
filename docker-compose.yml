@@ -17,3 +17,8 @@ services:
       - "443:443"
     volumes_from:
       - app:ro
+    #healthcheck:
+    #  test: ["CMD", "curl", "-f", "http://servers.php"]
+    #  interval: 1m30s
+    #  timeout: 10s
+    #  retries: 3

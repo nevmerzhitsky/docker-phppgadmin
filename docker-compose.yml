@@ -4,18 +4,17 @@ services:
   app:
     build: pgadmin
     restart: always
-    network_mode: host
     volumes:
       - /usr/share/nginx/html
       - ${PGADMIN_CONFIG_PATH}:/usr/share/nginx/html/conf/config.inc.php:ro
   web:
     build: nginx
     restart: always
-    network_mode: host
     depends_on:
       - app
     ports:
-      - "${NGINX_HTTP_PORT}:12380"
+      - "${NGINX_HTTP_PORT}:80"
+      - "${NGINX_HTTPS_PORT}:443"
     volumes_from:
       - app:ro
     #healthcheck:

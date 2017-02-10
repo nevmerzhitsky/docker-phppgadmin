@@ -4,9 +4,12 @@ services:
   app:
     build: pgadmin
     restart: always
+    environment:
+      - PG_SERVERS
+      - PG_SERVERS_PUBLIC_IPS
     volumes:
       - /usr/share/nginx/html
-      - ${PGADMIN_CONFIG_PATH}:/usr/share/nginx/html/conf/config.inc.php:ro
+      - ${PGADMIN_CONFIG_PATH}:/usr/share/nginx/html/conf/external-config.inc.php:ro
   web:
     build: nginx
     restart: always

@@ -43,13 +43,24 @@ if (file_exists(__DIR__ . '/docker-network-config.inc.php')) {
     }
 
     $map = array_combine($externalIps, $dockerIps);
+    $requestArrays = array(&$_REQUEST, &$_GET, &$_POST);
 
     foreach ($map as $extIp => $dockIp) {
-        if (isset($_GET['server'])) {
-            $_GET['server'] = $serverMapper($_GET['server'], $extIp, $dockIp);
+        // Map configuration
+        foreach ($conf['servers'] as &$server) {
+            $server['host'] = $serverMapper($server['host'], $extIp, $dockIp);
         }
-        if (isset($_POST['server'])) {
-            $_POST['server'] = $serverMapper($_POST['server'], $extIp, $dockIp);
+        // Map parameter of requests
+        foreach ($requestArrays as &$array) {
+            if (isset($array['server'])) {
+                $array['server'] = $serverMapper($array['server'], $extIp, $dockIp);
+            }
+        }
+    }
+
+    foreach ($map as $extIp => $dockIp) {
+        foreach ($requestArrays as &$array) {
+            var_dump('$array[\'server\']', $array['server']);
         }
     }
 } else {

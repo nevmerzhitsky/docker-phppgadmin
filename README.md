@@ -2,7 +2,7 @@ Docker image only phpPgAdmin 5.0 application on latest nginx and PHP 5.6.
 
 TODO Maybe it's a good idea to switch to https://github.com/bitnami/bitnami-docker-php-fpm.
 
-# PhpPgAdmin Configuration
+# phpPgAdmin Configuration
 
 Because the bridge network driver of Docker is used, if a PostgreSQL server is hosted on 127.0.0.1 IP
 or the same you should make additional configuration to map these IPs to the IP of the Docker Host(s).

@@ -2,13 +2,13 @@
 /**
  * ATTENTION!!!
  *
- * Don't edit this file for configuration of the PgAdmin servers. Read "PhpPgAdmin Configuration"
+ * Don't edit this file for configuration of the PgAdmin servers. Read "phpPgAdmin Configuration"
  * section in the README.md.
  */
 
 if (!file_exists(__DIR__ . '/external-config.inc.php')) {
     die('The conf directory should contain a config with "docker-network" or "external-network" ' .
-        'prefix. Check the PhpPgAdmin Configuration section in the README');
+        'prefix. Check the phpPgAdmin Configuration section in the README');
 }
 
 require __DIR__ . '/external-config.inc.php';

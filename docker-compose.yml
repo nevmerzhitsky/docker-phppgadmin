@@ -9,7 +9,7 @@ services:
       - PG_SERVERS_EXTERNAL_ADDRS
     volumes:
       - /usr/share/nginx/html
-      - ${PGADMIN_CONFIG_PATH}:/usr/share/nginx/html/conf/${PGADMIN_CONFIG_MODE}-network-config.inc.php:ro
+      - ${PGADMIN_CONFIG_PATH}:/usr/share/nginx/html/conf/external-config.inc.php:ro
   web:
     build: nginx
     restart: always

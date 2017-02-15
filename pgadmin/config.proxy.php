@@ -16,7 +16,7 @@ $serverMapper = function($value, $oldAddress, $newAddres) {
     $parsedAddress = $parts[0];
 
     if ($parsedAddress != $oldAddress) {
-        return '';
+        return $value;
     }
 
     return $newAddres . ($parts[1] ? ":{$parts[1]}" : '');
@@ -55,12 +55,6 @@ if (file_exists(__DIR__ . '/docker-network-config.inc.php')) {
             if (isset($array['server'])) {
                 $array['server'] = $serverMapper($array['server'], $extIp, $dockIp);
             }
-        }
-    }
-
-    foreach ($map as $extIp => $dockIp) {
-        foreach ($requestArrays as &$array) {
-            var_dump('$array[\'server\']', $array['server']);
         }
     }
 } else {

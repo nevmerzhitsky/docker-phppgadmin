@@ -8,5 +8,6 @@ RUN set -ex && \
     docker-php-ext-install pgsql
 
 WORKDIR $NGINX_DOCROOT
+COPY php.ini /usr/local/etc/php/conf.d/zzz-additional.ini
 COPY src .
 COPY config.proxy.php conf/config.inc.php

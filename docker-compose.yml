@@ -9,6 +9,9 @@ services:
       - PG_SERVERS_EXTERNAL_ADDRS
     volumes:
       - /usr/share/nginx/html
+      - ./pgadmin/themes/default.dev:/usr/share/nginx/html/themes/default.dev
+      - ./pgadmin/themes/default.prod:/usr/share/nginx/html/themes/default.prod
+      - ./pgadmin/themes/default.test:/usr/share/nginx/html/themes/default.test
       - ${PGADMIN_CONFIG_PATH}:/usr/share/nginx/html/conf/external-config.inc.php:ro
   web:
     build: nginx

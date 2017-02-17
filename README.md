@@ -6,6 +6,9 @@ Because the bridge network driver of Docker is used, if a PostgreSQL server is h
 * PG_SERVERS_DOCKER_IPS=docker_ip1,docker_ip2,...
 * PG_SERVERS_EXTERNAL_ADDRS=external_ip1,external_ip2,...
 
+To understand the networks of this image check this diagram:
+![image.png](docs/network-architecture.png)
+
 Define the list of IPs of required hosts from the docker network via `PG_SERVERS_DOCKER_IPS` and define the list of the external addresses via `PG_SERVERS_EXTERNAL_ADDRS`.
 
 For example:

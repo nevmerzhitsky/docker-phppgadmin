@@ -1,6 +1,16 @@
 Docker Compose with phpPgAdmin 5.0 application on latest nginx and PHP 5.6.
 
-# phpPgAdmin Configuration
+# Configuration
+
+All sensitive options for building and running a container available via the environment variables:
+* NGINX_HTTP_PORT - port of a web-server
+* PGADMIN_CONFIG_PATH - path to your local config of phpPgAdmin
+
+Both options are required.
+
+We recommend specify the environment variables vie `.env` file.
+
+# Docker Network Configuration
 
 Because the bridge network driver of Docker is used, if a PostgreSQL server is hosted on 127.0.0.1 IP or something you should make the additional configuration to map these IPs to the IP of the Docker Host(s). Use next two ENV variables to setup this mapping:
 * PG_SERVERS_DOCKER_IPS=docker_ip1,docker_ip2,...
